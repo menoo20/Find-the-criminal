@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0a0a0a;
+    color: #dfba60; /* Gold */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle gold glow behind everything */
+body::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(223, 186, 96, 0.05) 0%, rgba(10, 10, 10, 0) 70%);
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(15, 15, 15, 0.8);
+    border: 1px solid rgba(223, 186, 96, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(223, 186, 96, 0.05);
+    backdrop-filter: blur(10px);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+}
+
+.logo {
+    display: block;
+    width: 100px;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    filter: drop-shadow(0 0 10px rgba(223, 186, 96, 0.3));
+    animation: float 6s ease-in-out infinite;
+}
+
+.tab-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #dfba60, #b89030);
+    color: #0a0a0a;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(223, 186, 96, 0.2);
+}
+
+.clue-text {
+    font-size: 2rem;
+    line-height: 1.5;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    font-style: italic;
+    background: -webkit-linear-gradient(#f9e8a2, #dfba60);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    padding: 1rem 0;
+}
+
+/* Animations */
+@keyframes fadeUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@media (max-width: 600px) {
+    .clue-text {
+        font-size: 1.25rem;
+        padding: 1rem 0;
+    }
+    .logo {
+        width: 80px;
+        margin-bottom: 1rem;
+    }
+    .container {
+        padding: 1.5rem;
+        width: 95%;
+    }
+    .tab-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+        margin-bottom: 1rem;
+    }
+}
